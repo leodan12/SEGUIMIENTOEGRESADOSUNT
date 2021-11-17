@@ -34,8 +34,14 @@ Route::get('/egresado', 'PerfilController@egresado');
 Route::get('/users', 'UserController@index');
 //Route::post('/', 'UserController@login')->name('user.edit'); 
 
+// para gestionar perfiles
 
 Route::get('/perfiles', 'PerfilController@index');
+
+
+//rutas generales
+
+Route::resource('perfil','PerfilController');
 
 
 /*

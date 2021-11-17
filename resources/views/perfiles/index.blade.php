@@ -134,7 +134,7 @@
                     <td style="text-align: center">{{$k->perfil}}</td>
                     <td style="text-align: center">{{$k->estado}}</td>
                     <td class="menu" data-animation="to-left">  
-                      <a href=""> 
+                      <a href="{{route('perfil.edit',$k->id)}}"> 
                         <span><b>EDITAR</b></span>
                         <span>
                           <i class="fas fa-edit" aria-hidden="true"></i>
