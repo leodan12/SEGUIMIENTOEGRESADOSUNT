@@ -146,9 +146,9 @@
        
           <div class="container my-auto" style="position: absolute; top: 37%; left: 30%; height: 40%; margin: 0 0 0 -25%;">
 
-            <h1 class="mb-1" >COLEGIO INNOVA SCHOOLS</h1> 
+            <h1 class="mb-1" >UNIVERSIDAD NACIONAL DE TRUJILLO</h1> 
             <h3 class="mb-5">
-              <em>De genios para genios </em>
+              <em>SEGUIMIENTO DE EGRESADOS </em>
             </h3>
 
             <h3 class="mb-5">

@@ -1,6 +1,3 @@
- 
- 
-
 @extends('layouts.app')
 
 @section('content')
@@ -36,7 +33,7 @@
 <div class="card card-login card-plain">
 <div class="card-header text-center">
     <div class="logo">
-      <img src="{{asset('/img/www.png')}}" alt="">  <!-- logo central -->
+        <img src="\img\logo.png" alt="">
     </div>
   </div>
   <br>

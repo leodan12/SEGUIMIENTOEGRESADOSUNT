@@ -20,12 +20,14 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('perfils_id'); //->nullable()->default('1')
+            $table->boolean('estado')->default(true);
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
             $table->boolean('is_staff')->default(false);
             $table->boolean('is_admin')->default(false);
+            
            // $table->foreign('perfils_id')->references('id')->on('perfils');
         });
     }

@@ -43,8 +43,9 @@ class User extends Authenticatable
     ];
 
     
+     
     public function perfil(){
-        return $this->belongsTo('app\Models\Perfil');
+        return $this->hasOne('App\Models\Perfil','id','perfils_id');
     }
     
     

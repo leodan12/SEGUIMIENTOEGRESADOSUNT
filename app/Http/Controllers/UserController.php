@@ -4,9 +4,21 @@ use App\Models\User;
 use Illuminate\Http\Request;  //aca esta request, significa solicitud.
 use Illuminate\Support\Facades\Auth;   //siempre poner esto
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+    
+    public function index( Request $request){
+
+        $buscarpor=$request->get('buscarpor');
+        $usuarios=User::where('estado','=',TRUE)->where('name','like','%'.$buscarpor.'%')->get();//->paginate($this::PAGINACION);  
+       // $user=User::where('estado','=',TRUE)->get();
+        return   view('usuarios.index',compact('usuarios','buscarpor'));  
+
+    }
+    
+    
     public function login(Request $request){          //Vamos a realizar una validacion
         
         

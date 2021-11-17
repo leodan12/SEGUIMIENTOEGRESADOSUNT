@@ -28,6 +28,16 @@ Route::get('/comite', 'PerfilController@comite');
 Route::get('/egresado', 'PerfilController@egresado');
 
 
+//para gestionar usuarios
+
+Route::get('/users', 'UserController@index');
+Route::post('/', 'UserController@login')->name('user.edit'); 
+
+
+Route::get('/perfiles', 'PerfilController@index');
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });

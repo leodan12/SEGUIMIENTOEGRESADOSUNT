@@ -16,6 +16,7 @@ class CreatePerfilsTable extends Migration
         Schema::create('perfils', function (Blueprint $table) {
             $table->id();
             $table->string('perfil');
+            $table->boolean('estado')->default(true);
             $table->timestamps();
         });
     }
