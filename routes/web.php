@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 //para loguearse
 
-Route::post('/', 'UserController@login')->name('user.login'); 
+//Route::post('/', 'UserController@login')->name('user.login1'); 
+Route::post('/', 'UserController@login')->name('user.login1'); 
 Route::get('/integrantes','UserController@integrantes')->name('user.integrantes');
 
 
@@ -31,16 +32,16 @@ Route::get('/egresado', 'PerfilController@egresado');
 //para gestionar usuarios
 
 Route::get('/users', 'UserController@index');
-Route::post('/', 'UserController@login')->name('user.edit'); 
+//Route::post('/', 'UserController@login')->name('user.edit'); 
 
 
 Route::get('/perfiles', 'PerfilController@index');
 
 
-
+/*
 Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
