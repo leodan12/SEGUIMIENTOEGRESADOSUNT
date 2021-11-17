@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Perfil;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;   //siempre poner esto
+use Illuminate\Support\Facades\Auth;   //siempre poner esto ....
 use Illuminate\Support\Facades\Hash;
 
 class PerfilController extends Controller
