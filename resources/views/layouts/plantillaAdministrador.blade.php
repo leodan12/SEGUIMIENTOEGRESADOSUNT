@@ -76,8 +76,8 @@
           </li>
 
           <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Agregar, Modificar y Eliminar Perfiles" data-placement="bottom" href="/perfiles">
-              <h5>GESTIONAR PERFILES</h5>
+            <a class="nav-link" rel="tooltip" title="Agregar, Modificar y Eliminar Roles" data-placement="bottom" href="/perfiles">
+              <h5>GESTIONAR ROLES</h5>
             </a>
           </li>
          
