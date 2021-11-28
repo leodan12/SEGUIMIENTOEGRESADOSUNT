@@ -89,7 +89,7 @@
   <div class="form-group">
     
     <div class="container">
-      <h3 class="text-center">LISTADO DE PERFILES</h3>
+      <h3 class="text-center">LISTADO DE ROLES</h3>
       <div class="d-none d-md-block col-12" style="position: relative;right: 40%">
         <button class=" btn btn-success" style="border-radius: 40px;"   type="menu"><a class="text-white" href="../administrador" ><i class="fas fa-arrow-left"> </i> Regresar</a> </button>
       </div>
@@ -120,8 +120,8 @@
         <table class="table" style="border-radius: 12px;">
         <thead class="thead-dark">
           <tr>
-            <th scope="col"style="text-align: center">ID PERFIL</th>
-            <th scope="col" style="text-align: center">PERFIL</th>
+            <th scope="col"style="text-align: center">ID ROL</th>
+            <th scope="col" style="text-align: center">ROL</th>
             <th scope="col" style="text-align: center">ESTADO</th>
             <th scope="col" style="text-align: center">EDITAR</th>
             <th scope="col" style="text-align: center;" >ELIMINAR</th>

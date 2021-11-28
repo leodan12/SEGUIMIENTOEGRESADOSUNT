@@ -135,7 +135,7 @@
   <!-- FIN  NAVBARRA -->
 
   <div class="page-header clear-filter" filter-color="black"> <!-- inidio y fin de fondo  -->
-    <div class="page-header-image" style="background-image:url(../../img/innova.jpg)"> </div> <!-- fondo  -->
+    <div class="page-header-image" style="background-image:url(../../img/unt.jpg)"> </div> <!-- fondo  -->
     <!-- centro -->
     
 
