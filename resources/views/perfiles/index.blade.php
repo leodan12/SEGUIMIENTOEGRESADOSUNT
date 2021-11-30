@@ -107,8 +107,8 @@
     @endif
 
     <nav class="navbar navbar-light ">
-      <a href="" style="border-radius: 40px;" class="btn btn-success"><i class="fas fa-plus"></i>Registrar USUARIOS</a><br>
-      <form class="form-inline my-2 my-lg-0 float-right" method="GET">  <!--Para que se vaya a la derecha de la pagina float-->
+      <a href="{{route('perfil.create')}}" class="btn btn-success" style="border-radius: 40px;"><i class="fas fa-plus"></i>Registrar  Rol</a><br>
+     <form class="form-inline my-2 my-lg-0 float-right" method="GET">  <!--Para que se vaya a la derecha de la pagina float-->
           <input name="buscarpor" class="form-control col-8 mr-2" type="search"  style="border-radius: 40px;" placeholder="Buscar por Nombre" aria-label="Search" value="{{ $buscarpor }}">
            <button class="btn btn-success my-2 my-sm-0" style="border-radius: 40px;" type="submit">Buscar <i class="fa fa-search"></i></button>
       </form>  <!--buscador por      -->
@@ -143,12 +143,19 @@
                     </td>
                     <td>
                       <div class="form-group" style="text-align: center">
-                        <form class="submit-eliminar " action="" method="post">
+                        <form class="submit-eliminar " action="{{action('PerfilController@destroy', $k->id)}}" method="post">
                            @csrf
                            <input name="_method" type="hidden" value="DELETE">
-                           <button onclick="return confirm('Desea eliminar la capacidad?')" style="border-radius: 40px;" type="submit" class="btn btn-danger btn-sm">
+                           <button onclick="return confirm('Desea cambiar el estado del perfil?')" style="border-radius: 40px;" type="submit" class="btn btn-danger btn-sm">
                             <i class="fas fa-trash" ></i>
-                            Eliminar
+                             
+                                @if ($k->estado == '1')
+                                  Desactivar                                    
+                                @else
+                                  Activar                                    
+                                @endif
+                            
+                             
                         </button>
                          </form>
                         </div>

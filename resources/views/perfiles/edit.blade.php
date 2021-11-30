@@ -40,10 +40,15 @@
          <div class="from-group col-md-3">
             <label for="">Estado</label>
             <select name="estado" id="estado" class="form-control" required  style="border-radius: 40px;">
-                <option value="{{$perfil->estado}}" selected>Seleccione un Estado </option>
                 
-                    <option value="1">ACTIVO</option>
-                    <option value="0">INACTIVO</option>
+              @if ($perfil->estado =='1') 
+              { <option value="{{$perfil->estado}}" selected >  ACTIVO  </option>
+              <option value="0">INACTIVO</option>
+             } @else 
+              { <option value="{{$perfil->estado}}" selected> INACTIVO </option>
+              <option value="1">ACTIVO</option>
+             }
+         @endif
                  
             </select>
 

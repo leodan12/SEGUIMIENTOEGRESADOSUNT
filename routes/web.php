@@ -42,6 +42,7 @@ Route::get('/perfiles', 'PerfilController@index');
 //rutas generales
 
 Route::resource('perfil','PerfilController');
+Route::resource('usuario','UserController');
 
 
 
@@ -52,3 +53,17 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+// cancelaciones 
+Route::get('cancelarPerfil', function () {
+    return redirect()->route('perfil.index')->with('datos','Accion cancelada..!');
+})->name('cancelarPerfil');  //le damos nombre a la ruta
+
+Route::get('cancelarUsuario', function () {
+    return redirect()->route('usuario.index')->with('datos','Accion cancelada..!');
+})->name('cancelarUsuario');  //le damos nombre a la ruta
+
+
+//rutas usadas por javascript
+Route::Get('/usuarioslista', 'UserController@usuarios');
