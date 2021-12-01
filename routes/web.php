@@ -35,6 +35,8 @@ Route::get('/users', 'UserController@index');
 Route::get('/perfiles', 'PerfilController@index');
 Route::get('/empresas', 'EmpresaController@index');
 Route::get('/ofertaslaborales', 'OfertalaboralController@index');
+Route::get('/experiencialaborales', 'ExperiencialaboralController@index');
+Route::get('/publicaciones', 'PublicacionController@index');
 
 
 //rutas generales
@@ -43,6 +45,9 @@ Route::resource('perfil','PerfilController');
 Route::resource('usuario','UserController');
 Route::resource('empresa','EmpresaController');
 Route::resource('ofertalaboral','OfertalaboralController');
+Route::resource('experiencialaboral','ExperiencialaboralController');
+Route::resource('publicacion','PublicacionController');
+
 
 Route::get('/', function () {
     return view('welcome');
