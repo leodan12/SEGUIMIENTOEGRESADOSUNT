@@ -35,11 +35,7 @@
 <h4>
     <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">INICIAR SESION</a>
 </h4>
-    @if (Route::has('register'))
-    <h4>
-        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">REGISTRARSE</a>
-    </h4>
-        @endif
+    
 
 </div>
 @endif
