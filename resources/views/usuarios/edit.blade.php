@@ -73,9 +73,6 @@
                      <option value="1">ACTIVO</option>
                     }
                 @endif
-                
-                    
-                    
                  
             </select>
 

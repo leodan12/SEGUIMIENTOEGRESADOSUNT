@@ -29,22 +29,20 @@ Route::get('/comite', 'PerfilController@comite');
 Route::get('/egresado', 'PerfilController@egresado');
 
 
-//para gestionar usuarios
+//rutas index  
 
 Route::get('/users', 'UserController@index');
-//Route::post('/', 'UserController@login')->name('user.edit'); 
-
-// para gestionar perfiles
-
 Route::get('/perfiles', 'PerfilController@index');
+Route::get('/empresas', 'EmpresaController@index');
+Route::get('/ofertaslaborales', 'OfertalaboralController@index');
 
 
 //rutas generales
 
 Route::resource('perfil','PerfilController');
 Route::resource('usuario','UserController');
-
-
+Route::resource('empresa','EmpresaController');
+Route::resource('ofertalaboral','OfertalaboralController');
 
 Route::get('/', function () {
     return view('welcome');
@@ -63,6 +61,11 @@ Route::get('cancelarPerfil', function () {
 Route::get('cancelarUsuario', function () {
     return redirect()->route('usuario.index')->with('datos','Accion cancelada..!');
 })->name('cancelarUsuario');  //le damos nombre a la ruta
+Route::get('cancelarEmpresa', function () {
+    return redirect()->route('empresa.index')->with('datos','Accion cancelada..!');
+})->name('cancelarEmpresa');  //le damos nombre a la ruta
+
+
 
 
 //rutas usadas por javascript
