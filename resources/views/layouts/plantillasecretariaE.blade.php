@@ -64,20 +64,20 @@
             </a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/matricula">
+            <a class="nav-link" rel="tooltip" title="Logueado como secretaria de escuela" data-placement="bottom" href="#">
               <h5> SECRETARIA DE ESCUELA</h5>       
             </a>
           </li>
 
           <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Registro de Notas" data-placement="bottom" href="/nota">
-              <h5>NOTAS</h5>
+            <a class="nav-link" rel="tooltip" title="Gestionar Empresas" data-placement="bottom" href="/empresas">
+              <h5>EMPRESAS</h5>
             </a>
           </li>
 
           <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Registrar Usuarios Nuevos" data-placement="bottom" href="/RegistrarUser">
-              <h5>REGISTRAR USUARIOS</h5>
+            <a class="nav-link" rel="tooltip" title="Gestionar Ofertas Laborales" data-placement="bottom" href="/ofertaslaborales">
+              <h5>OFERTAS LABORALES</h5>
             </a>
           </li>
          
