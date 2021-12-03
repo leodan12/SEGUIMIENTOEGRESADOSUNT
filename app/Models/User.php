@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -48,6 +49,11 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\Perfil','id','perfils_id');
     }
     
+
+    public function egresados() {
+        
+        return $this->hasMany(Egresado::class,'idusuario','id');
+    }
     
 
     public function esAdmin(){

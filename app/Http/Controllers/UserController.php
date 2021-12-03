@@ -118,15 +118,18 @@ class UserController extends Controller
 
         ]);
 
-        if(Auth::attempt($data)){  //   Vamos a tener diferentes paginas
-
-            $con='OK';
-        }
+       
 
         $name=$request->get('name');
         $query=User::where('name','=',$name)->get();
-        if($query->count() !=0){    //count significa que no es igual a 0 , cuenta, encontro al usuario
+        if($query->count() !=0  ){    //count significa que no es igual a 0 , cuenta, encontro al usuario
+            if($query[0]->estado=='1'){
 
+                if(Auth::attempt($data)){  //   Vamos a tener diferentes paginas
+
+                    $con='OK';
+                }
+                
             $hashp=$query[0]->password;
             $password=$request->get('password');
             $perfils_id=$request->get('perfils_id');
@@ -144,16 +147,22 @@ class UserController extends Controller
                elseif(Auth::user()->perfils_id=='4'){
                 return redirect('/comite');
                }
-               elseif(Auth::user()->perfils_id=='5'){
+               elseif(Auth::user()->perfils_id=='5' && Auth::user()->estado=='1'){
                 return redirect('/egresado');
                }
-               else                
-               return route('logout') ;
-                
-
-            }else{
+               
+            }
+            else{
                 return back()->withErrors(['password'=>'Contraseña no válida '])->withInput([request('password')]);
             }
+
+            }
+            else {
+                return back()->withErrors(['name'=>'Usuario desactivado'])->withInput([request('usuario')]);
+   
+
+            }
+        
 
         }else{
 

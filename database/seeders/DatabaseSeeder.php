@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersSeeder::class);
         $this->call(EmpresasSeeder::class);
         $this->call(OfertaslaboralesSeeder::class);
+        $this->call(EgresadosSeeder::class);
          
     }
 }

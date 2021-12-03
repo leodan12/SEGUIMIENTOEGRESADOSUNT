@@ -11,12 +11,16 @@ class Egresado extends Model
 
     public function publicacion() {
         
-         return $this->hasMany(Egresado::class,'idegresado','id');
+         return $this->hasMany(Publicacion::class,'idegresado','id');
      }
 
      public function experiencialaboral() {
         
         return $this->hasMany(Experiencialaboral::class,'idegresado','id');
+    }
+
+    public function usuario(){
+        return $this->hasOne('App\Models\User','id','idusuario');
     }
 
 

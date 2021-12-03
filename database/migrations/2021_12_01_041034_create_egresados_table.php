@@ -19,12 +19,13 @@ class CreateEgresadosTable extends Migration
             $table->string('apellidos');
             $table->string('dni');
             $table->string('carrera');
-            $table->string('añoegreso');
-            $table->string('numeropromocion');
+            $table->integer('añoegreso');
+            $table->integer('numeropromocion');
             $table->boolean('estercio');
             $table->boolean('esquinto');
             $table->boolean('esbachiller');
             $table->boolean('estitulado');
+            $table->integer('idusuario');
             $table->boolean('estado')->default(true);
             $table->timestamps();
         });
