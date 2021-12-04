@@ -133,7 +133,6 @@
             <th scope="col" style="text-align: center">MODALIDAD</th>
             <th scope="col" style="text-align: center">TIPO DE CONTRATO</th>
             <th scope="col" style="text-align: center">EMPRESA</th>
-            <th scope="col" style="text-align: center">ESTADO</th>
             <th scope="col" style="text-align: center">EDITAR</th>
             <th scope="col" style="text-align: center;" >ELIMINAR</th>
           </tr>
@@ -141,7 +140,6 @@
         <tbody>
             @foreach($expLab as $k)
                 <tr>
-                      
                     <td style="text-align: center">{{$k->area}}</td>
                     <td style="text-align: center">{{$k->cargo}}</td>
                     <td style="text-align: center">{{$k->funciones}}</td>
@@ -149,8 +147,7 @@
                     <td style="text-align: center">{{$k->fechatermino}}</td>
                     <td style="text-align: center">{{$k->modalidad}}</td>
                     <td style="text-align: center">{{$k->tipocontrato}}</td>
-                    <td style="text-align: center">{{$k->empresa->razonsocial}}</td>
-                    <td style="text-align: center">{{$k->estado}}</td>
+                    <td style="text-align: center">{{$k->razonsocial}}</td>
                      
                     <td class="menu" data-animation="to-left">  
                       <a href="{{route('experiencialaboral.edit',$k->id)}}"> 
@@ -165,17 +162,10 @@
                         <form class="submit-eliminar " action="{{action('ExperiencialaboralController@destroy', $k->id)}}" method="post">
                            @csrf
                            <input name="_method" type="hidden" value="DELETE">
-                           <button onclick="return confirm('Desea cambiar el estado de la experiencia laboral?')" style="border-radius: 40px;" type="submit" class="btn btn-danger btn-sm">
-                            <i class="fas fa-trash" ></i>
-                             
-                                @if ($k->estado == '1')
-                                  Desactivar                                    
-                                @else
-                                  Activar                                    
-                                @endif
-                            
-                             
-                        </button>
+                           <button onclick="return confirm('Desea eliminar la Experiencia Laboral?')" type="submit" class="btn btn-danger btn-sm" style="border-radius: 40px;">
+                            <i class="fas fa-trash mr-2"></i>
+                            Eliminar
+                          </button>
                          </form>
                         </div>
                     </td>

@@ -26,6 +26,16 @@
             @csrf   
            
             <div class="form-row">
+                <div class="from-group col-md-4">
+                  <label for="idegresado">EGRESADO</label>
+                  <select name="idegresado" id="idegresado" class="form-control"  disabled  style="border-radius: 40px;">
+                  @foreach ($egresado as $itemp)
+                  <option value="{{$itemp->id}}" selected>{{$itemp->apellidos}} {{$itemp->nombres}}</option>
+                  @endforeach
+                </select>
+
+                </div>
+
                 <div class="form-group col-md-5">
                   <label for="area">Área</label>
                 <input type="text" class="form-control @error('area') is-invalid @enderror" id="area" name="area"  style="border-radius: 40px;" >
@@ -103,7 +113,7 @@
                  
        <div class="from-group col-md-2">
           <label for="estado">Estado</label>
-          <select name="estado" id="estado" class="form-control" required  style="border-radius: 40px;">
+          <select name="estado" id="estado" class="form-control" disabled required  style="border-radius: 40px;">
                     
             <option value="1"  selected>ACTIVO</option>
             <option value="0">INACTIVO</option>
@@ -131,4 +141,12 @@
 @endsection
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
- 
+<script>
+// With jQuery
+//Para que se pueda enviar el atributo de un select disabled
+jQuery(function ($) {        
+  $('form').bind('submit', function () {
+    $(this).find(':input').prop('disabled', false);
+  });
+});
+</script>

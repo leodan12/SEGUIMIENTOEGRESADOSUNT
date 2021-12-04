@@ -14,8 +14,30 @@ class PublicacionSeeder extends Seeder
      */
     public function run()
     {
-        //DB::table('publicacion')->
-        //insert(['titulo' => 'se nesecita desarrollor python','cargo'=>'desarrollador en lenguaje python', 'area'=>'desarrollo','descripcion'=>'desarrollo de aplicaciones web en django pyhton','disponibilidad'=>'tiempo completo','tipocontrato'=>'temporal', 'duracioncontrato'=>'6 meses','sueldo'=>'2500','funcion'=>'desarrollar las tareas asignadas','numerovacantes'=>'4','fechaemision'=>'2021-10-01','idempresa'=>'2',]);
+        DB::table('publicacions')->
+        insert(['titulo' => 'PublicacionRichard',
+        'tematica'=>'BASE DE DATOS', 
+        'edicion'=>'LUCHITO',
+        'editorial'=>'LARRY',
+        'isbn'=>'8995925',
+        'ruta'=>'ruta', 
+        'fechapublicacion'=>'4/12/2021',
+        'idegresado'=>'1',
+        'estado'=>TRUE,
+        ]);
+
+        DB::table('publicacions')->
+        insert(['titulo' => 'PublicacionMachuca',
+        'tematica'=>'BASE DE DATOS', 
+        'edicion'=>'LUCHITO',
+        'editorial'=>'LARRY',
+        'isbn'=>'8995925',
+        'ruta'=>'ruta', 
+        'fechapublicacion'=>'4/12/2021',
+        'idegresado'=>'2',
+        'estado'=>TRUE,
+        ]);
+       
        
     }
 }

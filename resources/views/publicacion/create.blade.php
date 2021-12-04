@@ -26,8 +26,17 @@
             @csrf   
            
             <div class="form-row">
-            
-                <div class="form-group col-md-5">
+
+                <div class="from-group col-md-4">
+                    <label for="idegresado">EGRESADO</label>
+                    <select name="idegresado" id="idegresado" class="form-control"  disabled  style="border-radius: 40px;">
+                    @foreach ($egresado as $itemp)
+                    <option value="{{$itemp->id}}" selected>{{$itemp->apellidos}} {{$itemp->nombres}}</option>
+                    @endforeach
+                  </select>
+                </div>
+
+                <div class="form-group col-md-3">
                   <label for="titulo">Titulo</label>
                 <input type="text" class="form-control @error('titulo') is-invalid @enderror" id="titulo" name="titulo"  style="border-radius: 40px;" >
                   @error('titulo')
@@ -84,38 +93,24 @@
                 @enderror
              </div>
 
-      <div class="form-group col-md-2">
-        <label for="fechapublicacion">Fecha de Publicación</label>
-      <input type="date" class="form-control @error('fechapublicacion') is-invalid @enderror" id="fechapublicacion" name="fechapublicacion"  style="border-radius: 40px;" >
-        @error('fechapublicacion')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{$message}}</strong>
-            </span>                  
-        @enderror
-    </div>
+          <div class="form-group col-md-2">
+            <label for="fechapublicacion">Fecha de Publicación</label>
+          <input type="date" class="form-control @error('fechapublicacion') is-invalid @enderror" id="fechapublicacion" name="fechapublicacion"  style="border-radius: 40px;" >
+            @error('fechapublicacion')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{$message}}</strong>
+                </span>                  
+            @enderror
+        </div>
 
-   <div class="from-group col-md-4">
-    <label for="idegresado">Egresado</label>
-    <select name="idegresado" id="idegresado" class="form-control"   style="border-radius: 40px;"   >
-        <option value="{{ old('idegresado') }}" disabled > :</option>
-        @foreach ( $egresado as $itemp)
-    <option value="{{$itemp->id}}">{{$itemp->nombres}}</option>
-        @endforeach
-    </select>
-
-  </div>
-                 
-      <div class="from-group col-md-2">
-          <label for="estado">Estado</label>
-          <select name="estado" id="estado" class="form-control" required  style="border-radius: 40px;">
-                    
-            <option value="1"  selected>ACTIVO</option>
-            <option value="0">INACTIVO</option>
-          </select>
-    
-      </div>
-    
-    
+        <div class="from-group col-md-2">
+            <label for="estado">Estado</label>
+            <select name="estado" id="estado" class="form-control" disabled required  style="border-radius: 40px;">
+                      
+              <option value="1"  selected>ACTIVO</option>
+              <option value="0">INACTIVO</option>
+            </select>
+        </div>
     
             </div>
     
@@ -138,4 +133,12 @@
 @endsection
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
- 
+<script>
+// With jQuery
+//Para que se pueda enviar el atributo de un select disabled
+jQuery(function ($) {        
+  $('form').bind('submit', function () {
+    $(this).find(':input').prop('disabled', false);
+  });
+});
+</script>

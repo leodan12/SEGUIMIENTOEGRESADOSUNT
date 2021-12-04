@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Publicacion;
 use App\Models\Egresado;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;   //siempre poner esto ....
 use Illuminate\Support\Facades\Hash;
@@ -13,17 +14,27 @@ class PublicacionController extends Controller
 {
     public function index( Request $request){
 
+        $idUsuario=Auth()->user()->id;
         $buscarpor=$request->get('buscarpor');
-        $pub=Publicacion::where('titulo','like','%'.$buscarpor.'%')->get();//->paginate($this::PAGINACION);  
+        $pub=DB::table('publicacions as p')
+        ->join('egresados as e','e.id','=','p.idegresado')
+        ->join('users as u','u.id','=','e.idusuario')
+        ->where('p.estado','=','1')
+        ->where('u.id','=',$idUsuario)
+        ->where('p.titulo','LIKE','%'.$buscarpor.'%')
+        ->select('p.id','p.titulo','p.tematica','p.edicion','p.editorial','p.isbn','p.ruta','p.fechapublicacion','p.estado')->get();
         
-     //  $user=perfil::where('estado','=',TRUE)->get();
         return  view('publicacion.index',compact('pub','buscarpor'));  
   
     }
 
     public function create()
     {
-        $egresado=Egresado::all();
+        $idUsuario=Auth()->user()->id;
+        $egresado=DB::table('egresados as e','e.estado','=','1')
+        ->join('users as u','u.id','=','e.idusuario')
+        ->where('u.id','=',$idUsuario)
+        ->select('e.id','e.nombres','e.apellidos')->get();
         return view('publicacion.create' ,compact('egresado'));
     }
 
@@ -61,8 +72,8 @@ class PublicacionController extends Controller
             $pub->ruta=$request->ruta;
             $pub->fechapublicacion=$request->fechapublicacion;
             $pub->idegresado=$request->idegresado;
-            $expLab->estado=$request->estado;
-            $expLab->save();  
+            $pub->estado=$request->estado;
+            $pub->save();  
             
             return redirect()->route('publicacion.index')->with('datos','Registro Guardado...!');    
            
@@ -71,10 +82,14 @@ class PublicacionController extends Controller
 
     public function edit($id)
   {
-      $egresado=egresado::all();
+      $idUsuario=Auth()->user()->id;
+      $egresado=DB::table('egresados as e','e.estado','=','1')
+      ->join('users as u','u.id','=','e.idusuario')
+      ->where('u.id','=',$idUsuario)
+      ->select('e.id','e.nombres','e.apellidos')->get();
       $pub=Publicacion::findOrfail($id);
       
-      return view('ofertaslaborales.edit',compact('pub','egresado'));
+      return view('publicacion.edit',compact('pub','egresado'));
   }
 
 
@@ -114,8 +129,8 @@ class PublicacionController extends Controller
                 $pub->ruta=$request->ruta;
                 $pub->fechapublicacion=$request->fechapublicacion;
                 $pub->idegresado=$request->idegresado;
-                $expLab->estado=$request->estado;
-                $expLab->save();  
+                $pub->estado=$request->estado;
+                $pub->save();  
                 
                 return redirect()->route('publicacion.index')->with('datos','Registro Actualizado...!');    
              
@@ -126,17 +141,10 @@ class PublicacionController extends Controller
 
   public function destroy($id)
   {
-      $pub=Publicacion::findOrFail($id);
-      if ( ($pub->estado) =='1') {
-       $pub->estado='0';
-       $pub->save();
-       return redirect()->route('publicacion.index')->with('datos','Publicación Desactivada...!');
-          }
-       elseif(($pub->estado) =='0') {
-       $pub->estado='1';
-       $pub->save();
-       return redirect()->route('publicacion.index')->with('datos','Publicación Activada...!');
-       }
-
+    $pub=Publicacion::findOrFail($id);
+    $pub->estado='0';
+    $pub->save();
+    return redirect()->route('publicacion.index')->with('datos','Publicación Eliminada...!');
+        
       }
 }

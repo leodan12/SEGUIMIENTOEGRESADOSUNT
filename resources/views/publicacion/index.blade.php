@@ -120,19 +120,13 @@
         <table class="table" style="border-radius: 12px;">
         <thead class="thead-dark">
           <tr>
-            <!--     
-            <th scope="col"style="text-align: center">TITULO</th> -->
             <th scope="col"style="text-align: center">TÍTULO</th>
             <th scope="col" style="text-align: center">TEMÁTICA</th>
-            <!--   <th scope="col" style="text-align: center">DESCRIPCION</th> 
-            <th scope="col" style="text-align: center">DISPONIBILIDAD</th>-->
             <th scope="col" style="text-align: center">EDICIÓN</th>
             <th scope="col" style="text-align: center">EDITORIAL</th>
             <th scope="col" style="text-align: center">ISBN</th>
-           <!--  <th scope="col" style="text-align: center">FUNCION</th>-->
             <th scope="col" style="text-align: center">RUTA</th>
             <th scope="col" style="text-align: center">FECHA DE PUBLICACIÓN</th>
-            <th scope="col" style="text-align: center">ESTADO</th>
             <th scope="col" style="text-align: center">EDITAR</th>
             <th scope="col" style="text-align: center;" >ELIMINAR</th>
           </tr>
@@ -150,7 +144,6 @@
                      
                     <td style="text-align: center">{{$k->ruta}}</td>
                     <td style="text-align: center">{{$k->fechapublicacion}}</td>
-                    <td style="text-align: center">{{$k->estado}}</td>
                      
                     <td class="menu" data-animation="to-left">  
                       <a href="{{route('publicacion.edit',$k->id)}}"> 
@@ -165,17 +158,10 @@
                         <form class="submit-eliminar " action="{{action('PublicacionController@destroy', $k->id)}}" method="post">
                            @csrf
                            <input name="_method" type="hidden" value="DELETE">
-                           <button onclick="return confirm('Desea cambiar el estado de la publicación?')" style="border-radius: 40px;" type="submit" class="btn btn-danger btn-sm">
-                            <i class="fas fa-trash" ></i>
-                             
-                                @if ($k->estado == '1')
-                                  Desactivar                                    
-                                @else
-                                  Activar                                    
-                                @endif
-                            
-                             
-                        </button>
+                           <button onclick="return confirm('Desea eliminar la Publicación?')" type="submit" class="btn btn-danger btn-sm" style="border-radius: 40px;">
+                            <i class="fas fa-trash mr-2"></i>
+                            Eliminar
+                          </button>
                          </form>
                         </div>
                     </td>

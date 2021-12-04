@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ExperienciaLaboral;
+use App\Models\Experiencialaboral;
 use App\Models\Empresa;
 use App\Models\Egresado;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;   //siempre poner esto ....
 use Illuminate\Support\Facades\Hash;
@@ -14,17 +15,28 @@ class ExperiencialaboralController extends Controller
     public function index( Request $request){
 
         $buscarpor=$request->get('buscarpor');
-        $expLab=ExperienciaLaboral::where('area','like','%'.$buscarpor.'%')->get();//->paginate($this::PAGINACION);  
-        
-     //  $user=perfil::where('estado','=',TRUE)->get();
+        $idUsuario=Auth()->user()->id;
+        $expLab=DB::table('experiencialaborals as el')
+        ->join('egresados as e','e.id','=','el.idegresado')
+        ->join('users as u','u.id','=','e.idusuario')
+        ->join('empresas as em','em.id','=','el.idempresa')
+        ->where('el.estado','=','1')
+        ->where('u.id','=',$idUsuario)
+        ->where('el.area','like','%'.$buscarpor.'%')
+        ->select('el.id','el.estado','el.area','el.cargo','el.funciones','el.fechainicio','el.fechatermino','el.modalidad','el.tipocontrato','em.razonsocial')->get();
         return  view('experiencialaboral.index',compact('expLab','buscarpor'));  
   
     }
 
     public function create()
     {
-        $empresa =Empresa::all();
-        $egresado=Egresado::all();
+        $idUsuario=Auth()->user()->id;
+        $empresa=Empresa::all();
+        $egresado=DB::table('egresados as e','e.estado','=','1')
+        ->join('users as u','u.id','=','e.idusuario')
+        ->where('u.id','=',$idUsuario)
+        ->select('e.id','e.nombres','e.apellidos')->get();
+
         return view('experiencialaboral.create' ,compact('empresa','egresado'));
     }
 
@@ -55,7 +67,7 @@ class ExperiencialaboralController extends Controller
             'estado.required'=>'Ingrese el estado',
             ]);
   
-            $expLab=new ExperienciaLaboral();    //instanciamos nuestro modelo oferta laboral
+            $expLab=new Experiencialaboral();    //instanciamos nuestro modelo oferta laboral
             $expLab->area=$request->area;  //designamos el valor de descripcion
             $expLab->cargo=$request->cargo;
             $expLab->funciones=$request->funciones;
@@ -75,11 +87,15 @@ class ExperiencialaboralController extends Controller
 
     public function edit($id)
   {
+      $idUsuario=Auth()->user()->id;
       $empresa=Empresa::all();
-      $egresado=egresado::all();
-      $expLab=ExperienciaLaboral::findOrfail($id);
+      $egresado=DB::table('egresados as e','e.estado','=','1')
+      ->join('users as u','u.id','=','e.idusuario')
+      ->where('u.id','=',$idUsuario)
+      ->select('e.id','e.nombres','e.apellidos')->get();
+      $expLab=Experiencialaboral::findOrfail($id);
       
-      return view('ofertaslaborales.edit',compact('empresa','egresado','expLab'));
+      return view('experiencialaboral.edit',compact('empresa','egresado','expLab'));
   }
 
 
@@ -112,7 +128,7 @@ class ExperiencialaboralController extends Controller
                  
                 ]);
       
-                $expLab= ExperienciaLaboral::findOrfail($id);       //instanciamos nuestro modelo oferta laboral
+                $expLab= Experiencialaboral::findOrfail($id);       //instanciamos nuestro modelo oferta laboral
                 $expLab->area=$request->area;  //designamos el valor de descripcion
                 $expLab->cargo=$request->cargo;
                 $expLab->funciones=$request->funciones;
@@ -134,17 +150,11 @@ class ExperiencialaboralController extends Controller
 
   public function destroy($id)
   {
-      $expLab=ExperienciaLaboral::findOrFail($id);
-      if ( ($expLab->estado) =='1') {
-       $expLab->estado='0';
-       $expLab->save();
-       return redirect()->route('experiencialaboral.index')->with('datos','Experiencia Laboral Desactivado...!');
-          }
-       elseif(($expLab->estado) =='0') {
-       $expLab->estado='1';
-       $expLab->save();
-       return redirect()->route('experiencialaboral.index')->with('datos','Experiencia Laboral Activado...!');
-       }
+    $expLab=Experiencialaboral::findOrFail($id);
+    $expLab->estado ='0';  
+    $expLab->save();
+    return redirect()->route('experiencialaboral.index')->with('datos','Experiencia Laboral Eliminado...!');
+      
+}
 
-      }
 }

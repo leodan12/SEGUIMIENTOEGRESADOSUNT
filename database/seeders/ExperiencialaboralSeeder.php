@@ -28,7 +28,8 @@ class ExperiencialaboralSeeder extends Seeder
         'estado'=>TRUE,
         ]);
 
-        /*
+        
+        
         DB::table('experiencialaborals')->
         insert([
         'cargo'=>'PROGRAMADOR BACKEND',
@@ -41,7 +42,7 @@ class ExperiencialaboralSeeder extends Seeder
        'idegresado'=>'2',
        'idempresa'=>'1',
        'estado'=>TRUE,
-        ]);*/
+        ]);
 
        
     }
