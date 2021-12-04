@@ -26,6 +26,7 @@ class CreateEgresadosTable extends Migration
             $table->boolean('esbachiller');
             $table->boolean('estitulado');
             $table->boolean('estado')->default(true);
+            $table->integer('idusuario')->nullable(); //Relacion egresado y usuario
             $table->timestamps();
         });
     }

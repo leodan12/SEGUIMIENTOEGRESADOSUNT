@@ -162,7 +162,7 @@
                     </td>
                     <td>
                       <div class="form-group" style="text-align: center">
-                        <form class="submit-eliminar " action="{{action('Experiencialaboral@destroy', $k->id)}}" method="post">
+                        <form class="submit-eliminar " action="{{action('ExperiencialaboralController@destroy', $k->id)}}" method="post">
                            @csrf
                            <input name="_method" type="hidden" value="DELETE">
                            <button onclick="return confirm('Desea cambiar el estado de la experiencia laboral?')" style="border-radius: 40px;" type="submit" class="btn btn-danger btn-sm">

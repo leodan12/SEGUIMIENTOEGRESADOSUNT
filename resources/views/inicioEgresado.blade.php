@@ -6,8 +6,8 @@
       <h3 class="text-secondary mb-0"> ✔ Elige una de las opciones disponibles para el egresado ✔</h3>
       <br>
     </div>
-    <div class="row row-cols-2 no-gutters">
-      <div class="col">
+    <div class="row row-cols-lg-1  no-gutters">
+      <div class="col-12 col-md-6 ">
         <a class="portfolio-item" href="/experiencialaborales">
           <div class="caption">
             <div class="caption-content">
@@ -18,7 +18,7 @@
           <img class="img-fluid" src="/img/matriculas.jpg" alt="">
         </a>
       </div>
-      <div class="col">
+      <div class="col-12 col-md-6 ">
         <a class="portfolio-item" href="/publicaciones">
           <div class="caption">
             <div class="caption-content">

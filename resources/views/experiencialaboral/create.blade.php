@@ -27,7 +27,7 @@
            
             <div class="form-row">
                 <div class="form-group col-md-5">
-                  <label for="titulo">Área</label>
+                  <label for="area">Área</label>
                 <input type="text" class="form-control @error('area') is-invalid @enderror" id="area" name="area"  style="border-radius: 40px;" >
                   @error('area')
                       <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
                 @enderror
              </div>
              <div class="form-group col-md-3">
-                <label for="area">Funciones</label>
+                <label for="funciones">Funciones</label>
               <input type="text" class="form-control @error('funciones') is-invalid @enderror" id="funciones" name="funciones"  style="border-radius: 40px;" >
                 @error('funciones')
                     <span class="invalid-feedback" role="alert">
