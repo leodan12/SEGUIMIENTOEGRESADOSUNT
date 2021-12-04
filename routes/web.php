@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 //para loguearse
 
-//Route::post('/', 'UserController@login')->name('user.login1'); 
+
 Route::post('/', 'UserController@login')->name('user.login1'); 
 Route::get('/integrantes','UserController@integrantes')->name('user.integrantes');
 
