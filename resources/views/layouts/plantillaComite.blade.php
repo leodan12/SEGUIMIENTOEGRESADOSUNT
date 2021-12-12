@@ -70,14 +70,14 @@
           </li>
 
           <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Registro de Notas" data-placement="bottom" href="/nota">
-              <h5>NOTAS</h5>
+            <a class="nav-link" rel="tooltip" title="Registro de Notas" data-placement="bottom" href="/encuesta">
+              <h5>ENCUESTAS</h5>
             </a>
           </li>
 
           <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Registrar Usuarios Nuevos" data-placement="bottom" href="/RegistrarUser">
-              <h5>REGISTRAR USUARIOS</h5>
+            <a class="nav-link" rel="tooltip" title="Registrar Usuarios Nuevos" data-placement="bottom" href="/Reporte">
+              <h5>REPORTES</h5>
             </a>
           </li>
          

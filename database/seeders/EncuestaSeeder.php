@@ -15,8 +15,8 @@ class EncuestaSeeder extends Seeder
     public function run()
     {
         DB::table('encuestas')->insert(['titulo' => 'mercado laboral para ing de sistemas','tipo'=>'mercado laboral', 'fechapublicacion'=>'2021-12-10',   'estadoencuesta'=>'publicada']);
-        DB::table('encuestas')->insert(['titulo' => 'oferta laboral para ing de sistema','tipo'=>'mercado laboral', 'fechapublicacion'=>'2021-12-11',   'estadoencuesta'=>'publicada']);
-        DB::table('encuestas')->insert(['titulo' => 'demanda laboral para ing de sistema','tipo'=>'mercado laboral', 'fechapublicacion'=>'2021-12-12', 'estadoencuesta'=>'registrada']);
+        DB::table('encuestas')->insert(['titulo' => 'oferta laboral para ing de sistema','tipo'=>'mercado laboral', 'fechapublicacion'=>'2021-12-10',   'estadoencuesta'=>'publicada']);
+        DB::table('encuestas')->insert(['titulo' => 'demanda laboral para ing de sistema','tipo'=>'mercado laboral', 'fechapublicacion'=>'2021-12-10', 'estadoencuesta'=>'registrada']);
 
        
         
