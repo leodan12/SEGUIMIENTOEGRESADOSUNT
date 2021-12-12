@@ -24,4 +24,10 @@ class Egresado extends Model
     }
 
 
+    public function egreencuesta() {
+        
+        return $this->hasMany(EgreEncuesta::class,'egresado_id','id');
+    }
+
+
 }

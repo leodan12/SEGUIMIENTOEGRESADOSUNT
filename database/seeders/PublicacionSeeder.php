@@ -21,7 +21,7 @@ class PublicacionSeeder extends Seeder
         'editorial'=>'LARRY',
         'isbn'=>'8995925',
         'ruta'=>'ruta', 
-        'fechapublicacion'=>'4/12/2021',
+        'fechapublicacion'=>'2021-12-04',
         'idegresado'=>'1',
         'estado'=>TRUE,
         ]);
@@ -33,7 +33,7 @@ class PublicacionSeeder extends Seeder
         'editorial'=>'LARRY',
         'isbn'=>'8995925',
         'ruta'=>'ruta', 
-        'fechapublicacion'=>'4/12/2021',
+        'fechapublicacion'=>'2021-12-10',
         'idegresado'=>'2',
         'estado'=>TRUE,
         ]);
