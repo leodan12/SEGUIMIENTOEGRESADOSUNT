@@ -26,7 +26,7 @@ class Egresado extends Model
 
     public function egreencuesta() {
         
-        return $this->hasMany(EgreEncuesta::class,'egresado_id','id');
+        return $this->hasMany(Egreencuesta::class,'egresado_id','id');
     }
 
 

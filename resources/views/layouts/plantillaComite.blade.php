@@ -64,7 +64,7 @@
             </a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/matricula">
+            <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/comite">
               <h5> COMITE</h5>       
             </a>
           </li>

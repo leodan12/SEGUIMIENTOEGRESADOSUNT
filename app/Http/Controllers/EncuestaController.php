@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Perfil;
+use App\Models\Pregunta;
+use App\Models\Respuesta;
 use App\Models\Egresado;
+use App\Models\Egreencuesta;
 use App\Models\Encuesta;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;   //siempre poner esto ....
@@ -19,6 +21,22 @@ class EncuestaController extends Controller
         
      //  $user=perfil::where('estado','=',TRUE)->get();
         return  view('encuestas.index',compact('encuesta','buscarpor'));  
+  
+    }
+    public function listaE( Request $request){
+
+        $buscarpor=$request->get('buscarpor');
+        $encuesta=Encuesta::where('titulo','like','%'.$buscarpor.'%')->where('estadoencuesta','=','publicada')->get();//->paginate($this::PAGINACION);  
+        
+        $egresado=Egresado::where('idusuario','=',Auth::user()->id)->get();
+      
+        $EgreE=Egreencuesta::where('estado','=','1')->get();
+        $pregunta=Pregunta::where('estado','=','1')->get();//->paginate($this::PAGINACION);  
+        $respuesta=Respuesta::where('estado','=','1')->get();
+    
+
+     //  $user=perfil::where('estado','=',TRUE)->get();
+        return  view('encuestas.listaE',compact('encuesta','buscarpor','egresado','EgreE','pregunta','respuesta'));  
   
     }
     public function create()

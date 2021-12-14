@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEgreEncuestasTable extends Migration
+class CreateEgreencuestasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,6 +17,7 @@ class CreateEgreEncuestasTable extends Migration
             $table->id();
             $table->integer('egresado_id');
             $table->integer('encuesta_id');
+            $table->boolean('estado')->default(true);
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateEgreEncuestasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('egre__encuestas');
+        Schema::dropIfExists('egreencuestas');
     }
 }

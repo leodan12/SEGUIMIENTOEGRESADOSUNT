@@ -14,6 +14,6 @@ class Respuesta extends Model
     }
 
     public function egreencuesta(){
-        return $this->hasOne('App\Models\EgreEncuesta','id','egreencuesta_id');
+        return $this->hasOne('App\Models\Egreencuesta','id','egreencuesta_id');
     }
 }

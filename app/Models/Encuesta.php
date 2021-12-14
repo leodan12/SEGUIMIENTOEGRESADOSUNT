@@ -16,7 +16,7 @@ class Encuesta extends Model
 
     public function egreencuesta() {
         
-        return $this->hasMany(EgreEncuesta::class,'encuesta_id','id');
+        return $this->hasMany(Egreencuesta::class,'encuesta_id','id');
     }
 
 }

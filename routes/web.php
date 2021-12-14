@@ -40,6 +40,7 @@ Route::resource('experiencialaboral','ExperiencialaboralController');
 Route::resource('publicacion','PublicacionController');
 Route::resource('encuesta','EncuestaController');
 Route::resource('pregunta','PreguntaController');
+Route::resource('respuesta', 'RespuestaController');
 
 
 //para entrar con diferente perfil
@@ -49,6 +50,7 @@ Route::get('/secretariaE', 'PerfilController@secretariaE');
 Route::get('/secretariaC', 'PerfilController@secretariaC');
 Route::get('/comite', 'PerfilController@comite');
 Route::get('/egresado', 'PerfilController@egresado');
+
 
 
 //rutas index  
@@ -65,6 +67,9 @@ Route::get('/encuestas', 'EncuestaController@index');
 Route::get('/Encuesta/{id}','EncuestaController@estado')->name('estadoencuesta');
 Route::get('/PreguntasEncuesta/{id}','PreguntaController@listap')->name('listapreguntas');
 Route::get('/CrearPreguntasEncuesta/{id}','PreguntaController@crear')->name('crearpreguntas');
+Route::get('/responderencuestas','EncuestaController@listaE')->name('responderencuestas');
+Route::get('/preguntasEncuestaE/{id}','RespuestaController@listar')->name('listarpreguntas');
+Route::get('/Responderpreguntas/{id}','RespuestaController@crear')->name('responderpreguntas');
 
 
 // cancelaciones 
@@ -81,7 +86,9 @@ Route::get('cancelarEmpresa', function () {
 Route::get('cancelarEncuesta', function () {
     return redirect()->route('encuesta.index')->with('datos','Accion cancelada..!');
 })->name('cancelarEncuesta');  //le damos nombre a la ruta
-
+Route::get('cancelarRespuesta', function () {
+    return redirect()->route('respuesta.listar')->with('datos','Accion cancelada..!');
+})->name('cancelarRespuesta');  //le damos nombre a la ruta
 
 
 

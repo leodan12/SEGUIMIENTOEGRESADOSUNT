@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class EgreRespuestaController extends Controller
+class EgreEncuestaController extends Controller
 {
     //
 }
