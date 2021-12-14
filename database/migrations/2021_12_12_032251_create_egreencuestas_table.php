@@ -28,6 +28,6 @@ class CreateEgreEncuestasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('egre__encuestas');
+        Schema::dropIfExists('egreencuestas');
     }
 }

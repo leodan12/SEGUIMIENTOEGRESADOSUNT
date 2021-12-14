@@ -64,19 +64,19 @@
             </a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/matricula">
+            <a class="nav-link" rel="tooltip" title="Comite inicio" data-placement="bottom" href="/comite">
               <h5> COMITE</h5>       
             </a>
           </li>
 
           <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Registro de Notas" data-placement="bottom" href="/encuesta">
+            <a class="nav-link" rel="tooltip" title="Registro de Encuestas" data-placement="bottom" href="/encuesta">
               <h5>ENCUESTAS</h5>
             </a>
           </li>
 
           <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Registrar Usuarios Nuevos" data-placement="bottom" href="/Reporte">
+            <a class="nav-link" rel="tooltip" title="Reportes" data-placement="bottom" href="/reporte">
               <h5>REPORTES</h5>
             </a>
           </li>
