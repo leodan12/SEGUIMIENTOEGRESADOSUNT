@@ -1,4 +1,4 @@
-@extends('layouts.plantillaSecretariaE')
+@extends('layouts.plantillaComite')
 @section('contenido')
 <style>
   :root {

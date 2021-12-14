@@ -1,4 +1,4 @@
-@extends('layouts.plantillaEgresado')
+@extends('layouts.plantillaComite')
 @section('contenido')
 <style>
   :root {
@@ -162,7 +162,7 @@
                               @csrf
                               <input name="_method" type="hidden" >
 
-                              <button onclick="return confirm('¡Esta encuesta ya fue publicada!')" style="border-radius: 40px;" type="submit" class="btn btn-success btn-sm">
+                              <button onclick="return confirm('¡Esta encuesta ya fue publicada, no se puede agregar preguntas!')" style="border-radius: 40px;" type="submit" class="btn btn-success btn-sm">
                                <i class="fas fa-plus" ></i>
                                      Cerrado                                    
                                  </button>
