@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Perfil;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;   //siempre poner esto
+use Illuminate\Support\Facades\Auth;   //siempre poner esto ....
 use Illuminate\Support\Facades\Hash;
 
 class PerfilController extends Controller
@@ -20,6 +20,35 @@ class PerfilController extends Controller
       return  view('perfiles.index',compact('perfil','buscarpor'));  
 
   }
+
+
+
+  public function create()
+    {
+        
+        return view('perfiles.create' );
+    }
+
+    public function store(Request $request)
+    {
+        $data=request()->validate([
+            'perfil'=>'required|max:50',
+            
+        ],
+        [
+            'perfil.required'=>'Ingrese Un Perfil '
+             
+            ]);
+  
+            $perfil=new Perfil();    //instanciamos nuestro modelo perfil
+            $perfil->perfil=$request->perfil;  //designamos el valor de perfil
+            $perfil->estado='1';   //campo de descripcion
+            $perfil->save();
+            
+              return redirect()->route('perfil.index')->with('datos','Registro Nuevo Guardado...!'); 
+           
+    }
+
 
   public function edit($id)
   {
@@ -45,6 +74,25 @@ class PerfilController extends Controller
             $perfil->save();  
             
             return redirect()->route('perfil.index')->with('datos','Registro Actualizado...!');    
+    }
+
+    public function destroy($id)
+    {
+        $perfil=Perfil::findOrFail($id);
+        if ( ($perfil->estado) =='1') {
+         $perfil->estado='0';
+         $perfil->save();
+         return redirect()->route('perfil.index')->with('datos','Rol Desactivado...!');
+            }
+         elseif(($perfil->estado) =='0') {
+         $perfil->estado='1';
+         $perfil->save();
+         return redirect()->route('perfil.index')->with('datos','Rol Activado...!');
+         }
+         
+        
+         
+        
     }
 
     public function administrador()

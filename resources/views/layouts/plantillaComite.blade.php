@@ -64,20 +64,20 @@
             </a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/matricula">
+            <a class="nav-link" rel="tooltip" title="Comite inicio" data-placement="bottom" href="/comite">
               <h5> COMITE</h5>       
             </a>
           </li>
 
           <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Registro de Notas" data-placement="bottom" href="/nota">
-              <h5>NOTAS</h5>
+            <a class="nav-link" rel="tooltip" title="Registro de Encuestas" data-placement="bottom" href="/encuesta">
+              <h5>ENCUESTAS</h5>
             </a>
           </li>
 
           <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Registrar Usuarios Nuevos" data-placement="bottom" href="/RegistrarUser">
-              <h5>REGISTRAR USUARIOS</h5>
+            <a class="nav-link" rel="tooltip" title="Reportes" data-placement="bottom" href="/reporte">
+              <h5>REPORTES</h5>
             </a>
           </li>
          
@@ -135,7 +135,7 @@
   <!-- FIN  NAVBARRA -->
 
   <div class="page-header clear-filter" filter-color="black"> <!-- inidio y fin de fondo  -->
-    <div class="page-header-image" style="background-image:url(../../img/innova.jpg)"> </div> <!-- fondo  -->
+    <div class="page-header-image" style="background-image:url(../../img/unt.jpg)"> </div> <!-- fondo  -->
     <!-- centro -->
     
 

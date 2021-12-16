@@ -3,7 +3,10 @@
 @section('contenido')
 
     <div class="container-fluid" >
-        <h1 style="text-align: center">Editar Usuario</h1>
+        <div class="row"><div class="col"> 
+            <h1 style="text-align: center">Editar Usuario</h1>
+        </div></div>
+       
         <div class="row">
             <div class="col-12">&nbsp;</div>
     </div>
@@ -17,50 +20,65 @@
         </button>
   </div>
   @endif
-        <form method="POST"  action="{{route('curso.update',$curso->idcurso)}}" > <!--para que vaya a la ruta esa y luego vaya al controlador a llamar ee metodo-->
+        <form method="POST"  action="{{route('usuario.update',$usuario->id)}}" > <!--para que vaya a la ruta esa y luego vaya al controlador a llamar ee metodo-->
             @method('put')
              @csrf  
            
          <div class="form-row">
            
-           <div class="from-group col-md-6">
-             <label for="">Niveles</label>
-             <select name="idnivel" id="idnivel" class="form-control" required  style="border-radius: 40px;">
-                 <option value="" disabled selected>Seleccione un Nivel (Nivel actual: {{$curso->grado->nivel->nivel}})</option>
-                 @foreach ( $nivel as $itemnivel)
-             <option value="{{$itemnivel['idnivel']}}">{{$itemnivel['nivel']}}</option>
-                 @endforeach
-             </select>
- 
-           </div>
+         <div class="col col-2"></div>  
       
-         <div class="form-group col-md-6">
+         <div class="form-group col-md-5">
                
-                 <label for="">Grados</label>
-                     <select class="form-control" name="idgrado" id="idgrado" style="border-radius: 40px;" disabled required>
-                         <option value="" selected>Seleccione un Grado (Grado actual: {{$curso->grado->grado}})</option>
- 
-                     </select>
+                 <label for="">Email</label>
+                 <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email"  style="border-radius: 40px;" value="{{$usuario->email}}">
+                 @error('email')
+                     <span class="invalid-feedback" role="alert">
+                          <strong>{{$message}}</strong>
+                      </span>                  
+                 @enderror
          </div>
-            <div class="form-group col-md-6">
-              <label for="curso">Curso</label>
-            <input type="text" class="form-control @error('curso') is-invalid @enderror" id="curso" name="curso"  style="border-radius: 40px;" value="{{$curso->curso}}">
-              @error('curso')
+
+         <div class="from-group col-md-3">
+            <label for="perfil">Rol</label>
+            <select name="perfil" id="perfil" class="form-control"   style="border-radius: 40px;">
+                <option value="{{$usuario->perfil->id}}"  selected> {{$usuario->perfil->perfil}}</option>
+                @foreach ( $perfil as $itemp)
+            <option value="{{$itemp->id}}">{{$itemp->perfil}}</option>
+                @endforeach
+            </select>
+
+          </div>
+            <div class="col col-2"></div>
+            <div class="col col-2"></div>
+            <div class="form-group col-md-5">
+              <label for="usuario">Usuario</label>
+            <input type="text" class="form-control @error('usuario') is-invalid @enderror" id="usuario" name="usuario"  style="border-radius: 40px;" value="{{$usuario->name}}">
+              @error('usuario')
                   <span class="invalid-feedback" role="alert">
                        <strong>{{$message}}</strong>
                    </span>                  
               @enderror
            </div>
 
-           <div class="form-group col-md-6">
-            <label for="codigocurso">Codigo del Curso</label>
-           <input type="text" class="form-control @error('codigocurso') is-invalid @enderror" id="codigocurso" name="codigocurso"  style="border-radius: 40px;" value="{{$curso->codigocurso}}">
-            @error('codigocurso')
-                <span class="invalid-feedback" role="alert">
-                     <strong>{{$message}}</strong>
-                 </span>                  
-            @enderror
+           <div class="from-group col-md-3">
+            <label for="">Estado</label>
+            <select name="estado" id="estado" class="form-control" required  style="border-radius: 40px;">
+                
+                     @if ($usuario->estado =='1') 
+                     { <option value="{{$usuario->estado}}" selected >  ACTIVO  </option>
+                     <option value="0">INACTIVO</option>
+                    } @else 
+                     { <option value="{{$usuario->estado}}" selected> INACTIVO </option>
+                     <option value="1">ACTIVO</option>
+                    }
+                @endif
+                 
+            </select>
+
           </div>
+
+            
 
         </div>
         <div class="row">
@@ -72,7 +90,7 @@
                 <div class="col-md-4">&nbsp;</div> 
                 <div class="col-md-4">
                     <button type="submit" class="btn btn-primary mr-4" style="border-radius: 40px;"><i class="fas fa-save"></i>Guardar</button>
-                    <a href="{{route('cancelarCurso')}}" style="border-radius: 40px;" class="btn btn-danger"> <i class="fas fa-ban"></i> Cancelar</a>
+                    <a href="{{route('cancelarUsuario')}}" style="border-radius: 40px;" class="btn btn-danger"> <i class="fas fa-ban"></i> Cancelar</a>
                 </div>
           </div>
           <div class="row"><div class="col-12">&nbsp;</div></div>   
@@ -81,24 +99,36 @@
 @endsection
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-<script>
-$(document).ready(function(){
-      $("#idnivel").change(function(){
-        var nivel = $(this).val();
-            $('#idgrado').removeAttr('disabled');
-        $.get('/gradobynivelesCurso/'+nivel, function(data){
-          console.log(data);
-            var producto_select = '<option value="" disabled selected>Seleccione un Grado</option>'
-              for (var i=0; i<data.length;i++){
+ <script>
+     $(document).ready(function(){
 
-                producto_select+='<option value="'+data[i].idgrado+'">'+data[i].grado+'</option>';
-              }
-              $("#idgrado").html(producto_select);
+        //funcion para verificar el usuario
 
-        });
-      });
+        $("#usuario").keyup(function(){
+    		 
+        var usuario = $(this).val();
+        var cont = 0    
+        $.get('/usuarioslista', function(data){ 
+         //   console.log(data);
+             for(var i=0; i<data.length;i++){
+                 if(data[i].name == usuario){
+                 cont=cont+1
+                 }
+             }
+             if(cont>=1){
+                document.getElementById("usuario").style.borderColor="#FF0000"
+             }
+             else if(cont==0){
+                document.getElementById("usuario").style.borderColor="#0fff12"
+             }  
+             
+	});
+
+	});
+
+ 
+
+     
     });
+ </script>
 
-
-  
-  </script>

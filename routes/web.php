@@ -15,9 +15,33 @@ use Illuminate\Support\Facades\Route;
 
 //para loguearse
 
-//Route::post('/', 'UserController@login')->name('user.login1'); 
+
 Route::post('/', 'UserController@login')->name('user.login1'); 
 Route::get('/integrantes','UserController@integrantes')->name('user.integrantes');
+
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+
+
+//rutas generales
+
+Route::resource('perfil','PerfilController');
+Route::resource('usuario','UserController');
+Route::resource('empresa','EmpresaController');
+Route::resource('ofertalaboral','OfertalaboralController');
+Route::resource('experiencialaboral','ExperiencialaboralController');
+Route::resource('publicacion','PublicacionController');
+Route::resource('encuesta','EncuestaController');
+Route::resource('pregunta','PreguntaController');
+Route::resource('respuesta', 'RespuestaController');
+Route::resource('reporte','GraficoController');
 
 
 //para entrar con diferente perfil
@@ -29,26 +53,52 @@ Route::get('/comite', 'PerfilController@comite');
 Route::get('/egresado', 'PerfilController@egresado');
 
 
-//para gestionar usuarios
+
+//rutas index  
 
 Route::get('/users', 'UserController@index');
-//Route::post('/', 'UserController@login')->name('user.edit'); 
-
-// para gestionar perfiles
-
 Route::get('/perfiles', 'PerfilController@index');
+Route::get('/empresas', 'EmpresaController@index');
+Route::get('/ofertaslaborales', 'OfertalaboralController@index');
+Route::get('/experiencialaborales', 'ExperiencialaboralController@index');
+Route::get('/publicaciones', 'PublicacionController@index');
+Route::get('/encuestas', 'EncuestaController@index');
+Route::get('/reporte', 'GraficoController@grafico');
+Route::get('/titulados', 'GraficoController@titulados');
+Route::get('/ofertas', 'GraficoController@ofertas');
+Route::get('/calidad', 'GraficoController@calidad');
+Route::get('/empleo', 'GraficoController@empleabilidad');
 
 
-//rutas generales
+//rutas de metodos adicionales
+Route::get('/Encuesta/{id}','EncuestaController@estado')->name('estadoencuesta');
+Route::get('/PreguntasEncuesta/{id}','PreguntaController@listap')->name('listapreguntas');
+Route::get('/CrearPreguntasEncuesta/{id}','PreguntaController@crear')->name('crearpreguntas');
+Route::get('/responderencuestas','EncuestaController@listaE')->name('responderencuestas');
+Route::get('/preguntasEncuestaE/{id}','RespuestaController@listar')->name('listarpreguntas');
+Route::get('/Responderpreguntas/{id}','RespuestaController@crear')->name('responderpreguntas');
 
-Route::resource('perfil','PerfilController');
+
+// cancelaciones 
+Route::get('cancelarPerfil', function () {
+    return redirect()->route('perfil.index')->with('datos','Accion cancelada..!');
+})->name('cancelarPerfil');  //le damos nombre a la ruta
+
+Route::get('cancelarUsuario', function () {
+    return redirect()->route('usuario.index')->with('datos','Accion cancelada..!');
+})->name('cancelarUsuario');  //le damos nombre a la ruta
+Route::get('cancelarEmpresa', function () {
+    return redirect()->route('empresa.index')->with('datos','Accion cancelada..!');
+})->name('cancelarEmpresa');  //le damos nombre a la ruta
+Route::get('cancelarEncuesta', function () {
+    return redirect()->route('encuesta.index')->with('datos','Accion cancelada..!');
+})->name('cancelarEncuesta');  //le damos nombre a la ruta
+Route::get('cancelarRespuesta', function () {
+    return redirect()->route('respuesta.listar')->with('datos','Accion cancelada..!');
+})->name('cancelarRespuesta');  //le damos nombre a la ruta
 
 
-/*
-Route::get('/', function () {
-    return view('welcome');
-});*/
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+
+//rutas usadas por javascript
+Route::Get('/usuarioslista', 'UserController@usuarios');

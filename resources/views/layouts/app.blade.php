@@ -93,9 +93,10 @@
      data-mp4="https://www.innovaschools.edu.pe/wp-content/uploads/2018/09/video_home_innova.mp4"
       data-mp4-type="video/mp4" data-webm-type="video/webm"><video autoplay="" loop="" muted="" 
       playsinline="" poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-      style="background: url(&quot;https://www.innovaschools.edu.pe/wp-content/uploads/2017/03/Mobile-Home.jpg&quot;) 
+      style="background: url(&quot;./img/unt.jpg&quot;) 
       center center / cover no-repeat transparent; height: 772px; left: -245px; top: 0px; width: 1372px;">
-      <source src="https://www.innovaschools.edu.pe/wp-content/uploads/2018/09/video_home_innova.mp4"
+      <source src="FondoUnt1.mp4" autoplay muted loop width: 100%;
+      height: auto;
        type="video/mp4"></video></div>
 
        <footer class="footer">

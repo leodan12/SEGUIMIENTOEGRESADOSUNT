@@ -4,7 +4,7 @@
 
     <div class="container-fluid" >
         <div class="row"><div class="col">
-            <h1 style="text-align: center">Editar Perfil</h1>
+            <h1 style="text-align: center">Editar Rol</h1>
         </div></div>
         
         <div class="row">
@@ -27,7 +27,7 @@
          <div class="form-row">
            <div class="col col-3" ></div>
             <div class="form-group col-md-3">
-              <label for="perfil">Perfil</label>
+              <label for="perfil">Rol</label>
             <input type="text" class="form-control @error('perfil') is-invalid @enderror" id="perfil" name="perfil"  style="border-radius: 40px;" value="{{$perfil->perfil}}">
               @error('perfil')
                   <span class="invalid-feedback" role="alert">
@@ -40,10 +40,15 @@
          <div class="from-group col-md-3">
             <label for="">Estado</label>
             <select name="estado" id="estado" class="form-control" required  style="border-radius: 40px;">
-                <option value="{{$perfil->estado}}" selected>Seleccione un Estado </option>
                 
-                    <option value="1">ACTIVO</option>
-                    <option value="0">INACTIVO</option>
+              @if ($perfil->estado =='1') 
+              { <option value="{{$perfil->estado}}" selected >  ACTIVO  </option>
+              <option value="0">INACTIVO</option>
+             } @else 
+              { <option value="{{$perfil->estado}}" selected> INACTIVO </option>
+              <option value="1">ACTIVO</option>
+             }
+         @endif
                  
             </select>
 
@@ -61,7 +66,7 @@
                 <div class="col-md-4">&nbsp;</div> 
                 <div class="col-md-4">
                     <button type="submit" class="btn btn-primary mr-4" style="border-radius: 40px;"><i class="fas fa-save"></i>Guardar</button>
-                    <a href="" style="border-radius: 40px;" class="btn btn-danger"> <i class="fas fa-ban"></i> Cancelar</a>
+                    <a href="../" style="border-radius: 40px;" class="btn btn-danger"> <i class="fas fa-ban"></i> Cancelar</a>
                 </div>
           </div>
           <div class="row"><div class="col-12">&nbsp;</div></div>   

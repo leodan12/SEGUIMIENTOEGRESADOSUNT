@@ -19,6 +19,13 @@ class UsersSeeder extends Seeder
         DB::table('users')->insert(['name' => 'secretariaC','email' => 'secretariaC@gmail.com', 'password' =>bcrypt('password') ,'perfils_id' => '3','is_admin' => FALSE,]);
         DB::table('users')->insert(['name' => 'comite','email' => 'comite@gmail.com', 'password' =>bcrypt('password') ,'perfils_id' => '4','is_admin' => FALSE,]);
         DB::table('users')->insert(['name' => 'egresado','email' => 'egresado@gmail.com', 'password' =>bcrypt('password') ,'perfils_id' => '5','is_admin' => FALSE,]);
+        //usuarios de egresados
+
+        DB::table('users')->insert(['name' => 'richardbraul','email' => 'richardbraul@gmail.com', 'password' =>bcrypt('password') ,'perfils_id' => '5','is_admin' => FALSE,]);
+        DB::table('users')->insert(['name' => 'leodanmachuca','email' => 'leodanmachuca@gmail.com', 'password' =>bcrypt('password') ,'perfils_id' => '5','is_admin' => FALSE,]);
+
+        DB::table('users')->insert(['name' => 'roberto','email' => 'roberto@gmail.com', 'password' =>bcrypt('password') ,'perfils_id' => '5','is_admin' => FALSE,]);
+        DB::table('users')->insert(['name' => 'danny','email' => 'danny@gmail.com', 'password' =>bcrypt('password') ,'perfils_id' => '5','is_admin' => FALSE,]);
 
     }
 }
