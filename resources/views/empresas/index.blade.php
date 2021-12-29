@@ -91,10 +91,10 @@
     <div class="container">
       <h3 class="text-center">LISTADO DE EMPRESAS</h3>
       <div class="d-none d-md-block col-12" style="position: relative;right: 40%">
-        <button class=" btn btn-success" style="border-radius: 40px;"   type="menu"><a class="text-white" href="../secretariaE" ><i class="fas fa-arrow-left"> </i> Regresar</a> </button>
+        <button class=" btn btn-success" style="border-radius: 40px;"  type="menu"><a class="text-white" href="../secretariaE" ><i class="fas fa-arrow-left"> </i> Regresar</a> </button>
       </div>
       <div class="col-12 d-md-none" >
-        <button class=" btn btn-success" style="border-radius: 40px;"   type="menu"><a class="text-white" href="../secretariaE" ><i class="fas fa-arrow-left"> </i> Regresar</a> </button>
+        <button class=" btn btn-success" style="border-radius: 40px;"  type="menu"><a class="text-white" href="../secretariaE" ><i class="fas fa-arrow-left"> </i> Regresar</a> </button>
       </div>
 
     @if(session('datos'))
