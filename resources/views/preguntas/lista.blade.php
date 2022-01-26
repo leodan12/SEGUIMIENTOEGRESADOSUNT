@@ -183,7 +183,7 @@
             @endforeach
         </tbody>
     </table>  
-    <a href="../" style="margin-left: 95%" class="btn btn-info btn-sm">
+    <a href="./" style="margin-left: 95%" class="btn btn-info btn-sm">
       <i class="fas fa-backward"></i> Volver</a>
       <div class="align-center" style="margin-left: 45%"><h5></h5></div>
 </div>
