@@ -60,8 +60,11 @@ Route::get('/perfiles', 'PerfilController@index');
 Route::get('/empresas', 'EmpresaController@index');
 Route::get('/ofertaslaborales', 'OfertalaboralController@index');
 Route::get('/experiencialaborales', 'ExperiencialaboralController@index');
+Route::get('/verofertaslaborales', 'OfertalaboralController@index2');
 Route::get('/publicaciones', 'PublicacionController@index');
+Route::get('/verpublicaiones', 'PublicacionController@index2');
 Route::get('/encuestas', 'EncuestaController@index');
+Route::get('/verencuestas', 'EncuestaController@index2');
 
 //rutas de metodos adicionales
 Route::get('/Encuesta/{id}','EncuestaController@estado')->name('estadoencuesta');

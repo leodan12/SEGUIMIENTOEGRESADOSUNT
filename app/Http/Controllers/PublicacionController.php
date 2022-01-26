@@ -27,6 +27,23 @@ class PublicacionController extends Controller
         return  view('publicacion.index',compact('pub','buscarpor'));  
   
     }
+    public function index2( Request $request){
+
+        $idUsuario=Auth()->user()->id;
+        $buscarpor=$request->get('buscarpor');
+        $publicacion=DB::table('publicacions as p')
+        ->join('egresados as e','e.id','=','p.idegresado')
+        ->join('users as u','u.id','=','e.idusuario')
+        ->where('p.estado','=','1')
+        ->where('p.titulo','LIKE','%'.$buscarpor.'%')
+        ->select('e.apellidos','e.nombres','p.id','p.titulo','p.tematica','p.edicion','p.editorial','p.isbn','p.ruta','p.fechapublicacion','p.estado')->get();
+        
+      //  $egresado=DB::table('egresados as e','e.estado','=','1')->get();
+       // $egresado=Egresado::all();
+
+        return  view('publicacion.index2',compact('publicacion','buscarpor'));  
+  
+    }
 
     public function create()
     {

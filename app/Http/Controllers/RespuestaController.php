@@ -35,6 +35,30 @@ class RespuestaController extends Controller
         return  view('respuestas.create' , compact('pregunta',));
     }
 
+    public function edit($id)
+    {
+        $encuesta=Encuesta::findOrfail($id);
+        $pregunta=DB::table('encuestas as e')
+        ->join('preguntas as p','e.id','=','p.encuesta_id')
+        ->where('e.id','=',$id)
+        ->select('p.enunciado','e.titulo')->get();
+
+        $respuesta=DB::table('encuestas as e')
+        ->join('preguntas as p','e.id','=','p.encuesta_id')
+        ->join('respuestas as r','p.id','=','r.pregunta_id')
+        ->join('egreencuestas as ee','ee.id','=','r.egreencuesta_id')
+        ->join('egresados as egre','egre.id','=','ee.egresado_id')
+        ->where('e.id','=',$id)
+        ->select('r.enunciado','e.titulo','egre.id')->get();
+        
+        $egresados=DB::table('egresados as e')
+        ->select('e.id','e.nombres','e.apellidos')->get();
+        
+         
+        
+        return view('respuestas.index',compact('egresados','respuesta','encuesta','pregunta'));
+    }
+
     public function store(Request $request)
     {
         $data=request()->validate([

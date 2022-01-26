@@ -21,6 +21,17 @@ class OfertalaboralController extends Controller
         return  view('ofertaslaborales.index',compact('oferta','buscarpor'));  
   
     }
+    
+    public function index2( Request $request){
+
+        $buscarpor=$request->get('buscarpor');
+        $oferta=Ofertalaboral::where('titulo','like','%'.$buscarpor.'%')->get();//->paginate($this::PAGINACION);  
+        $empresa=Empresa::where('estado','=','1')->get();
+     //  $user=perfil::where('estado','=',TRUE)->get();
+     
+        return  view('ofertaslaborales.index2',compact('empresa','oferta','buscarpor'));  
+  
+    }
 
     public function create()
     {

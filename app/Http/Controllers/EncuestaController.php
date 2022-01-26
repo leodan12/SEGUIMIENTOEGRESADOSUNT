@@ -23,6 +23,17 @@ class EncuestaController extends Controller
         return  view('encuestas.index',compact('encuesta','buscarpor'));  
   
     }
+
+    public function index2( Request $request){
+
+        $buscarpor=$request->get('buscarpor');
+        $encuesta=Encuesta::where('titulo','like','%'.$buscarpor.'%')->get();//->paginate($this::PAGINACION);  
+        
+     //  $user=perfil::where('estado','=',TRUE)->get();
+        return  view('encuestas.index2',compact('encuesta','buscarpor'));  
+  
+    }
+
     public function listaE( Request $request){
 
         $buscarpor=$request->get('buscarpor');

@@ -54,4 +54,7 @@ class PreguntaController extends Controller
             return redirect()->route('listapreguntas',$encuesta[0]->id)->with('datos','Registro Guardado...!');    
            
     }
+
+    
+
 }
