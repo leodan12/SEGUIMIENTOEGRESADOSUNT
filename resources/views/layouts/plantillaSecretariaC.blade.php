@@ -64,20 +64,25 @@
             </a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Registro de Matriculas" data-placement="bottom" href="/matricula">
+            <a class="nav-link" rel="tooltip" title="logueado como secretaria del comite" data-placement="bottom" href="#">
               <h5> SECRETARIA DEL COMINTE</h5>       
             </a>
           </li>
 
           <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Registro de Notas" data-placement="bottom" href="/nota">
-              <h5>NOTAS</h5>
+            <a class="nav-link" rel="tooltip" title="ver las publicaciones de los egresados" data-placement="bottom" href="/verpublicaiones">
+              <h5>VER PUBLICACIONES</h5>
             </a>
           </li>
 
           <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" rel="tooltip" title="Registrar Usuarios Nuevos" data-placement="bottom" href="/RegistrarUser">
-              <h5>REGISTRAR USUARIOS</h5>
+            <a class="nav-link" rel="tooltip" title="ver las ofertas laborales disponibles" data-placement="bottom" href="/verofertaslaborales">
+              <h5>VER OFERTAS LABORALES</h5>
+            </a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a class="nav-link" rel="tooltip" title="ver las respuestas de las encuestas" data-placement="bottom" href="/verencuestas">
+              <h5>VER RESPUESTAS DE ENCUESTAS</h5>
             </a>
           </li>
          
