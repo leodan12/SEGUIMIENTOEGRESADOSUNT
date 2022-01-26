@@ -41,6 +41,7 @@ Route::resource('publicacion','PublicacionController');
 Route::resource('encuesta','EncuestaController');
 Route::resource('pregunta','PreguntaController');
 Route::resource('respuesta', 'RespuestaController');
+Route::resource('reporte','GraficoController');
 
 
 //para entrar con diferente perfil
@@ -64,7 +65,16 @@ Route::get('/verofertaslaborales', 'OfertalaboralController@index2');
 Route::get('/publicaciones', 'PublicacionController@index');
 Route::get('/verpublicaiones', 'PublicacionController@index2');
 Route::get('/encuestas', 'EncuestaController@index');
+ 
 Route::get('/verencuestas', 'EncuestaController@index2');
+ 
+Route::get('/reporte', 'GraficoController@grafico');
+Route::get('/titulados', 'GraficoController@titulados');
+Route::get('/ofertas', 'GraficoController@ofertas');
+Route::get('/calidad', 'GraficoController@calidad');
+Route::get('/empleo', 'GraficoController@empleabilidad');
+
+ 
 
 //rutas de metodos adicionales
 Route::get('/Encuesta/{id}','EncuestaController@estado')->name('estadoencuesta');
